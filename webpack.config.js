@@ -25,9 +25,6 @@ module.exports = {
     library: 'CerebralFirebase',
     libraryTarget: 'umd'
   },
-  externals: {
-    'firebase': 'firebase'
-  },
   module: {
     loaders: loaders
   }
