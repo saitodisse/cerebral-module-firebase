@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const loaders = [
   {
@@ -19,24 +18,16 @@ const loaders = [
 
 module.exports = {
   devtool: 'eval-source-map',
-  entry: path.resolve('src', 'main.js'),
+  entry: path.resolve('lib', 'index.js'),
   output: {
     path: path.resolve('build'),
-    filename: '[name].js',
-    publicPath: '/'
+    filename: 'index.js',
+    library: 'CerebralFirebase',
+    libraryTarget: 'umd'
   },
-  resolve: {
-    alias: {
-      'react-simple-flex': path.resolve('lib')
-    }
+  externals: {
+    'firebase': 'firebase'
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: path.resolve('src', 'index.tpl.html'),
-      inject: 'body',
-      filename: 'index.html'
-    })
-  ],
   module: {
     loaders: loaders
   }
